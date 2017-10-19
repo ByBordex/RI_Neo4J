@@ -1,0 +1,228 @@
+//BORRAR NODOS Y RELACIONES
+//MATCH (n) DETACH DELETE n
+
+// NODOS
+
+//Creacion nodos de personajes.
+CREATE (Geralt:Personaje {nombre_personaje:'Geralt'})
+CREATE (Lambert:Personaje {nombre_personaje:'Lambert'})
+CREATE (Vesemir:Personaje {nombre_personaje:'Vesemir'})
+CREATE (Eskel:Personaje {nombre_personaje:'Eskel'})
+CREATE (Jaskier:Personaje {nombre_personaje:'Jaskier'})
+CREATE (Emhyr:Personaje {nombre_personaje:'Emhyr var Emreis'})
+CREATE (Yennefer:Personaje {nombre_personaje:'Yennefer'})
+CREATE (Letho:Personaje {nombre_personaje:'Letho'})
+CREATE (Foltest:Personaje {nombre_personaje:'Foltest'})
+CREATE (JadKaradin:Personaje {nombre_personaje:'Jad Karadin'})
+CREATE (Eredin:Personaje {nombre_personaje:'Eredin'})
+CREATE (Toruviel:Personaje {nombre_personaje:'Toruviel'})
+CREATE (Avallach:Personaje {nombre_personaje:"Avallac'h"})
+CREATE (Jerome:Personaje {nombre_personaje:'Jerome Moreau'})
+CREATE (Zoltan:Personaje {nombre_personaje:'Zoltan'})
+CREATE (Triss:Personaje {nombre_personaje:'Triss'})
+CREATE (Ciri:Personaje {nombre_personaje:'Ciri'})
+
+//Creacíon nodos de bestiario.
+CREATE (Arpia:Bestia {nombre_bestia:'Arpia'})
+CREATE (Moira:Bestia {nombre_bestia:'Moira'})
+CREATE (Doppler:Bestia {nombre_bestia:'Doppler'})
+CREATE (Ghul:Bestia {nombre_bestia:'Ghul'})
+CREATE (Nekker:Bestia {nombre_bestia:'Nekker'})
+CREATE (Malogrado:Bestia {nombre_bestia:'Malogrado'})
+CREATE (Sirena:Bestia {nombre_bestia:'Sirena'})
+CREATE (Aparicion:Bestia {nombre_bestia:'Aparicion'})
+CREATE (Dama:Bestia {nombre_bestia:'Dama del mediodia'})
+CREATE (Basilisco:Bestia {nombre_bestia:'Basilisco'})
+CREATE (Djinn:Bestia {nombre_bestia:'Djinn'})
+CREATE (Pantera:Bestia {nombre_bestia:'Pantera'})
+
+//Creacion nodos ciudades.
+CREATE (Tir:Ciudad {name_ciudad:'Tir na Lia'})
+CREATE (CintraC:Ciudad {name_ciudad:'Cintra'})
+CREATE (Guleta:Ciudad {name_ciudad:'Guleta'})
+CREATE (Novigrado:Ciudad {name_ciudad:'Novigrado'})
+CREATE (Vergenberg:Ciudad {name_ciudad:'Vergenberg'})
+CREATE (KaerMorhenC:Ciudad {name_ciudad:'Kaer Morhen'})
+CREATE (TemeriaC:Ciudad {name_ciudad:'Temeria'})
+CREATE (Dol:Ciudad {name_ciudad:'Dol Blathanna'})
+CREATE (Maribor:Ciudad {name_ciudad:'Maribor'})
+CREATE (NilfgaardC:Ciudad {name_ciudad:'Nilfgaard'})
+CREATE (RiviaC:Ciudad {name_ciudad:'Rivia'})
+CREATE (ArdCarraig:Ciudad {name_ciudad:'Ard Carraig'})
+CREATE (Tretogor:Ciudad {name_ciudad:'Tretogor'})
+CREATE (Touissant:Ciudad {name_ciudad:'Touissant'})
+CREATE (OxenfurtC:Ciudad {name_ciudad: 'Oxenfurt'})
+CREATE (NovigradoC:Ciudad {name_ciudad: 'Novigrado'})
+CREATE (Wyzima:Ciudad {name_ciudad: 'Wyzima'})
+CREATE (ArdCarraigh:Ciudad {name_ciudad: 'ArdCarraigh'})
+CREATE (Thanedd:Ciudad {name_ciudad: 'Thanned'})
+
+//Creacion nodos paises
+CREATE (NilfgaardP:Pais {nombre_pais:'Nilfgaard'})
+CREATE (RiviaP:Pais {nombre_pais:'Rivia'})
+CREATE (Redania:Pais {nombre_pais:'Redania'})
+CREATE (Temeria:Pais {nombre_pais:'Temeria'})
+CREATE (Kaedwen:Pais {nombre_pais:'Kaedwen'})
+CREATE (Kovir:Pais {nombre_pais:'Kovir'})
+CREATE (Aedirn:Pais {nombre_pais:'Aedirn'})
+CREATE (CintraP:Pais {nombre_pais:'Cintra'})
+CREATE (Sodden:Pais {nombre_pais:'Sodden'})
+
+
+//Creacion nodos facciones
+CREATE (NilfgaardF:Faccion {nombre_faccion:'Nilfgaard'})
+CREATE (Brujos:Faccion {nombre_faccion:'Brujos'})
+CREATE (Logia:Faccion {nombre_faccion:'La logia'})
+CREATE (Scoiatael:Faccion {nombre_faccion:'Scoia’tael'})
+CREATE (ReinosDelNorte:Faccion {nombre_faccion:'Reinos del norte'})
+CREATE (CaceriaSalvaje:Faccion {nombre_faccion:'Caceria salvaje'})
+
+//Creacion nodos escuelaBrujos
+CREATE (Lobo:EscuelaBrujos {nombre_escuela:'Lobo'})
+CREATE (Vibora:EscuelaBrujos {nombre_escuela:'Vibora'})
+CREATE (Grifo:EscuelaBrujos {nombre_escuela:'Grifo'})
+CREATE (Gato:EscuelaBrujos {nombre_escuela:'Gato'})
+
+//Creacion nodos armisticio
+CREATE (BatallaSodden:Armisticio {nombre_armisticio:'Batalla del Monte Sodden'})
+CREATE (GolpeEstadoThanedd:Armisticio {nombre_armisticio:'Golpe de Estado de Thanedd'})
+
+
+//RELACIONES
+
+//Relaciones BORN
+CREATE
+  (Geralt)-[:BORN]->(RiviaC),
+  (Lambert)-[:BORN]->(KaerMorhenC),
+  (Vesemir)-[:BORN]->(KaerMorhenC),
+  (Emhyr)-[:BORN]->(NilfgaardC),
+  (Jaskier)-[:BORN]->(OxenfurtC),
+  (Yennefer)-[:BORN]->(Vergenberg),
+  (Letho)-[:BORN]->(Guleta),
+  (Foltest)-[:BORN]->(TemeriaC),
+  (JadKaradin)-[:BORN]->(NovigradoC),
+  (Eredin)-[:BORN]->(Tir),
+  (Toruviel)-[:BORN]->(Dol),
+  (Avallach)-[:BORN]->(Tir),
+  (Jerome)-[:BORN]->(Touissant),
+  (Zoltan)-[:BORN]->(NovigradoC),
+  (Triss)-[:BORN]->(Maribor),
+  (Ciri)-[:BORN]->(CintraC),
+  (Eskel)-[:BORN]->(KaerMorhenC)
+
+//Relaciones CAPITAL_DE
+CREATE
+	(NilfgaardC)-[:CAPITAL_DE]->(NilfgaardP),
+	(RiviaC)-[:CAPITAL_DE]->(RiviaP),
+	(Tretogor)-[:CAPITAL_DE]->(Redania),
+	(Wyzima)-[:CAPITAL_DE]->(Temeria),
+	(ArdCarraigh)-[:CAPITAL_DE]->(Kaedwen),
+	(Vergenberg)-[:CAPITAL_DE]->(Aedirn),
+	(CintraP)-[:CAPITAL_DE]->(CintraC)
+
+
+//Relaciones PERTENECE
+CREATE
+	(Emhyr)-[:PERTENECE]->(NilfgaardF),
+	(Geralt)-[:PERTENECE]->(Brujos),
+	(Yennefer)-[:PERTENECE]->(Logia),
+	(Lambert)-[:PERTENECE]->(Brujos),
+	(Letho)-[:PERTENECE]->(Brujos),
+	(Vesemir)-[:PERTENECE]->(Brujos),
+	(Eskel)-[:PERTENECE]->(Brujos),
+	(Foltest)-[:PERTENECE]->(ReinosDelNorte),
+	(JadKaradin)-[:PERTENECE]->(Brujos),
+	(Eredin)-[:PERTENECE]->(CaceriaSalvaje),
+	(Toruviel)-[:PERTENECE]->(Scoiatael),
+	(Jerome)-[:PERTENECE]->(Brujos),
+	(Triss)-[:PERTENECE]->(Logia)
+
+//RELACION FORMA
+
+//Relaciones HABITA_EN
+CREATE
+  (Arpia)-[:HABITA_EN]->(CintraC),
+  (Arpia)-[:HABITA_EN]->(KaerMorhenC),
+  (Moira)-[:HABITA_EN]->(Touissant),
+  (Moira)-[:HABITA_EN]->(NilfgaardC),
+  (Moira)-[:HABITA_EN]->(Maribor),
+  (Doppler)-[:HABITA_EN]->(Novigrado),
+  (Ghul)-[:HABITA_EN]->(CintraC),
+  (Ghul)-[:HABITA_EN]->(OxenfurtC),
+  (Nekker)-[:HABITA_EN]->(Tir),
+  (Nekker)-[:HABITA_EN]->(TemeriaC),
+  (Malogrado)-[:HABITA_EN]->(Novigrado),
+  (Malogrado)-[:HABITA_EN]->(Tir),
+  (Malogrado)-[:HABITA_EN]->(OxenfurtC),
+  (Sirena)-[:HABITA_EN]->(Touissant),
+  (Sirena)-[:HABITA_EN]->(NilfgaardC),
+  (Aparicion)-[:HABITA_EN]->(KaerMorhenC),
+  (Aparicion)-[:HABITA_EN]->(Tir),
+  (Aparicion)-[:HABITA_EN]->(Dol),
+  (Dama)-[:HABITA_EN]->(Guleta),
+  (Dama)-[:HABITA_EN]->(Maribor),
+  (Dama)-[:HABITA_EN]->(OxenfurtC),
+  (Basilisco)-[:HABITA_EN]->(Rivia),
+  (Basilisco)-[:HABITA_EN]->(TemeriaC),
+  (Basilisco)-[:HABITA_EN]->(Touissant),
+  (Djinn)-[:HABITA_EN]->(Guleta),
+  (Djinn)-[:HABITA_EN]->(Nilfgaard),
+  (Pantera)-[:HABITA_EN]->(Touissant),
+  (Pantera)-[:HABITA_EN]->(Nilfgaard)
+
+//Relacion ADRIESTRADO_EN
+CREATE 
+  (Geralt)-[:ADRIESTRADO_EN]->(Lobo),
+  (Lambert)-[:ADRIESTRADO_EN]->(Lobo),
+  (Vesemir)-[:ADRIESTRADO_EN]->(Lobo),
+  (Letho)-[:ADRIESTRADO_EN]->(Vibora),
+  (JadKaradin)-[:ADRIESTRADO_EN]->(Gato),
+  (Jerome)-[:ADRIESTRADO_EN]->(Grifo),
+  (Eskel)-[:ADRIESTRADO_EN]->(Lobo)
+
+//Relaciones GOBIERNA
+CREATE 
+	(Foltest)-[:GOBIERNA]->(Temeria),
+	(Emhyr)-[:GOBIERNA]->(NilfgaardP)
+
+//Relaciones FORMA
+CREATE
+	(Temeria)-[:FORMA]->(ReinosDelNorte)
+	(Redania)-[:FORMA]->(ReinosDelNorte),
+	(RiviaP)-[:FORMA]->(ReinosDelNorte),
+	(Kaedwen)-[:FORMA]->(ReinosDelNorte),
+	(Kovir)-[:FORMA]->(ReinosDelNorte),
+	(Aedirn)-[:FORMA]->(ReinosDelNorte),
+	(CintraP)-[:FORMA]->(ReinosDelNorte),
+	(NilfgaardP)-[:FORMA]->(NilfgaardF)
+
+//Relaciones TOMA_LUGAR_EN
+CREATE
+	(BatallaSodden)-[:TOMA_LUGAR_EN]->(Sodden),
+	(GolpeEstadoThanedd)-[:TOMA_LUGAR_EN]->(Thanedd)
+
+//Relaciones TOMA_PARTE
+CREATE
+	(NilfgaardF)-[:TOMA_PARTE]->(GolpeEstadoThanedd),
+	(Logia)-[:TOMA_PARTE]->(GolpeEstadoThanedd),
+	(Scoiatael)-[:TOMA_PARTE]->(GolpeEstadoThanedd),
+	(ReinosDelNorte)-[:TOMA_PARTE]->(GolpeEstadoThanedd)
+	(NilfgaardF)-[:TOMA_PARTE]->(BatallaSodden),
+	(ReinosDelNorte)-[:TOMA_PARTE]->(BatallaSodden)
+
+
+//Relaciones PARTICIPA
+CREATE
+	(Triss-[:PARTICIPA]->(GolpeEstadoThanedd),
+	(Yennefer)-[:PARTICIPA]->(GolpeEstadoThanedd),
+	(Geralt)-[:PARTICIPA]->(GolpeEstadoThanedd),
+
+	(Triss-[:PARTICIPA]->(BatallaSodden),
+	(Yennefer)-[:PARTICIPA]->(BatallaSodden),
+	(Emhyr)-[:PARTICIPA]->(BatallaSodden),
+	(Foltest)-[:PARTICIPA]->(BatallaSodden)
+
+//Relacionse SE_SITUAN
+CREATE
+	(Lobo)-[:SE_SITUA]->(KaerMorhenC),
+	(Vibora)-[:SE_SITUA]->(NilfgaardP)
