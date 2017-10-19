@@ -8,11 +8,25 @@ import java.sql.SQLException;
 
 public class JdbcNeo4jConnector {
 
-	public static Connection connect()
+	String URL, user, password;
+
+	public void setURL(String uRL) {
+		URL = uRL;
+	}
+
+	public void setUser(String user) {
+		this.user = user;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public Connection connect()
 	{
 		Connection con = null;
 		try {
-			con = DriverManager.getConnection("jdbc:neo4j:http://127.0.0.1:7474", "neo4j", "g1");
+			con = DriverManager.getConnection("jdbc:neo4j:" + URL, user, password);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -23,7 +37,7 @@ public class JdbcNeo4jConnector {
 	//MATCH (n:Personaje) RETURN n
 	//MATCH (n:Personaje) RETURN n.nombre_personaje
 	
-	public static String premadeQuery(String query)
+	public String premadeQuery(String query)
 	{
 		String result = "";
 		try{
@@ -48,7 +62,7 @@ public class JdbcNeo4jConnector {
 		return result;
 	}
 	
-	public static void showPersonajes()
+	public void showPersonajes()
 	{
 		try{
 			Connection con = connect();

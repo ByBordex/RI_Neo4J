@@ -187,7 +187,7 @@ CREATE
 
 //Relaciones FORMA
 CREATE
-	(Temeria)-[:FORMA]->(ReinosDelNorte)
+	(Temeria)-[:FORMA]->(ReinosDelNorte),
 	(Redania)-[:FORMA]->(ReinosDelNorte),
 	(RiviaP)-[:FORMA]->(ReinosDelNorte),
 	(Kaedwen)-[:FORMA]->(ReinosDelNorte),
@@ -206,18 +206,18 @@ CREATE
 	(NilfgaardF)-[:TOMA_PARTE]->(GolpeEstadoThanedd),
 	(Logia)-[:TOMA_PARTE]->(GolpeEstadoThanedd),
 	(Scoiatael)-[:TOMA_PARTE]->(GolpeEstadoThanedd),
-	(ReinosDelNorte)-[:TOMA_PARTE]->(GolpeEstadoThanedd)
+	(ReinosDelNorte)-[:TOMA_PARTE]->(GolpeEstadoThanedd),
 	(NilfgaardF)-[:TOMA_PARTE]->(BatallaSodden),
 	(ReinosDelNorte)-[:TOMA_PARTE]->(BatallaSodden)
 
 
 //Relaciones PARTICIPA
 CREATE
-	(Triss-[:PARTICIPA]->(GolpeEstadoThanedd),
+	(Triss)-[:PARTICIPA]->(GolpeEstadoThanedd),
 	(Yennefer)-[:PARTICIPA]->(GolpeEstadoThanedd),
 	(Geralt)-[:PARTICIPA]->(GolpeEstadoThanedd),
 
-	(Triss-[:PARTICIPA]->(BatallaSodden),
+	(Triss)-[:PARTICIPA]->(BatallaSodden),
 	(Yennefer)-[:PARTICIPA]->(BatallaSodden),
 	(Emhyr)-[:PARTICIPA]->(BatallaSodden),
 	(Foltest)-[:PARTICIPA]->(BatallaSodden)

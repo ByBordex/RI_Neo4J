@@ -24,6 +24,8 @@ import javax.swing.JScrollPane;
 
 public class VentanaPrincipal extends JFrame {
 
+	private JdbcNeo4jConnector neo4j;
+	
 	private JPanel contentPane;
 	private JButton btnApplyManualQuery;
 	private JPanelQueryResult panelQueryResult;
@@ -56,6 +58,10 @@ public class VentanaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public VentanaPrincipal() {
+		
+		neo4j = new JdbcNeo4jConnector();
+		new VentanaConfig( neo4j );
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(800,600);
 		setLocationRelativeTo(null);
@@ -75,7 +81,7 @@ public class VentanaPrincipal extends JFrame {
 			btnApplyManualQuery.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
 					
-					String result = JdbcNeo4jConnector.premadeQuery( txManualQuery.getText() );
+					String result = neo4j.premadeQuery( txManualQuery.getText() );
 					getPanelQueryResult().addOutput( result );
 				}
 			});
