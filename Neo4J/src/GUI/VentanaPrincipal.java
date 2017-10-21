@@ -160,7 +160,7 @@ public class VentanaPrincipal extends JFrame {
 		if (pnSimple == null) {
 			pnSimple = new JPanel();
 			pnSimple.setBackground(Color.WHITE);
-			pnSimple.setLayout(new MigLayout("", "[]", "[]"));
+			pnSimple.setLayout(new MigLayout("", "[fill]", "[]"));
 			generateQueryPanels(pnSimple, Dificultad.BASICA);
 		}
 		return pnSimple;
@@ -183,7 +183,7 @@ public class VentanaPrincipal extends JFrame {
 		if (pnIntermedias == null) {
 			pnIntermedias = new JPanel();
 			pnIntermedias.setBackground(Color.WHITE);
-			pnIntermedias.setLayout(new MigLayout("", "[]", "[]"));
+			pnIntermedias.setLayout(new MigLayout("", "[fill]", "[]"));
 			generateQueryPanels(pnIntermedias, Dificultad.INTERMEDIA);
 		}
 		return pnIntermedias;
@@ -193,7 +193,7 @@ public class VentanaPrincipal extends JFrame {
 			pnAvanzadas = new JPanel();
 			pnAvanzadas.setBackground(Color.WHITE);
 			generateQueryPanels(pnAvanzadas, Dificultad.AVANZADA);
-			pnAvanzadas.setLayout(new MigLayout("", "[]", "[]"));
+			pnAvanzadas.setLayout(new MigLayout("", "[fill]", "[]"));
 		}
 		return pnAvanzadas;
 	}
