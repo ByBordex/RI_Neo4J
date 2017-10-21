@@ -21,6 +21,7 @@ CREATE (Jerome:Personaje {nombre_personaje:'Jerome Moreau'})
 CREATE (Zoltan:Personaje {nombre_personaje:'Zoltan'})
 CREATE (Triss:Personaje {nombre_personaje:'Triss'})
 CREATE (Ciri:Personaje {nombre_personaje:'Ciri'})
+CREATE (Bran:Personaje {nombre_personaje:'Rey Bran'})
 
 //Creacíon nodos de bestiario.
 CREATE (Arpia:Bestia {nombre_bestia:'Arpia'})
@@ -56,6 +57,8 @@ CREATE (NovigradoC:Ciudad {name_ciudad: 'Novigrado'})
 CREATE (Wyzima:Ciudad {name_ciudad: 'Wyzima'})
 CREATE (ArdCarraigh:Ciudad {name_ciudad: 'ArdCarraigh'})
 CREATE (Thanedd:Ciudad {name_ciudad: 'Thanned'})
+CREATE (KaerTrolde:Ciudad {name_ciudad: 'Kaer Trolde'})
+
 
 //Creacion nodos paises
 CREATE (NilfgaardP:Pais {nombre_pais:'Nilfgaard'})
@@ -67,6 +70,9 @@ CREATE (Kovir:Pais {nombre_pais:'Kovir'})
 CREATE (Aedirn:Pais {nombre_pais:'Aedirn'})
 CREATE (CintraP:Pais {nombre_pais:'Cintra'})
 CREATE (Sodden:Pais {nombre_pais:'Sodden'})
+CREATE (ArdSkellig:Pais {nombre_pais:'Ard Skellig'})
+CREATE (Undvik:Pais {nombre_pais:'Undvik'})
+CREATE (Faroe:Pais {nombre_pais:'Faroe'})
 
 
 //Creacion nodos facciones
@@ -76,6 +82,7 @@ CREATE (Logia:Faccion {nombre_faccion:'La logia'})
 CREATE (Scoiatael:Faccion {nombre_faccion:'Scoia’tael'})
 CREATE (ReinosDelNorte:Faccion {nombre_faccion:'Reinos del norte'})
 CREATE (CaceriaSalvaje:Faccion {nombre_faccion:'Caceria salvaje'})
+CREATE (Skellige:Faccion {nombre_faccion:'Islas Skellige'})
 
 //Creacion nodos escuelaBrujos
 CREATE (Lobo:EscuelaBrujos {nombre_escuela:'Lobo'})
@@ -108,7 +115,8 @@ CREATE
   (Zoltan)-[:BORN]->(NovigradoC),
   (Triss)-[:BORN]->(Maribor),
   (Ciri)-[:BORN]->(CintraC),
-  (Eskel)-[:BORN]->(KaerMorhenC)
+  (Eskel)-[:BORN]->(KaerMorhenC),
+  (Bran)-[:BORN]->(KaerTrolde)
 
 //Relaciones CAPITAL_DE
 CREATE
@@ -118,6 +126,7 @@ CREATE
 	(Wyzima)-[:CAPITAL_DE]->(Temeria),
 	(ArdCarraigh)-[:CAPITAL_DE]->(Kaedwen),
 	(Vergenberg)-[:CAPITAL_DE]->(Aedirn),
+	(KaerTrolde)-[:CAPITAL_DE]->(ArdSkellig),
 	(CintraP)-[:CAPITAL_DE]->(CintraC)
 
 
@@ -135,6 +144,7 @@ CREATE
 	(Eredin)-[:PERTENECE]->(CaceriaSalvaje),
 	(Toruviel)-[:PERTENECE]->(Scoiatael),
 	(Jerome)-[:PERTENECE]->(Brujos),
+	(Bran)-[:PERTENECE]->(Skellige),
 	(Triss)-[:PERTENECE]->(Logia)
 
 //RELACION FORMA
@@ -156,6 +166,7 @@ CREATE
   (Malogrado)-[:HABITA_EN]->(OxenfurtC),
   (Sirena)-[:HABITA_EN]->(Touissant),
   (Sirena)-[:HABITA_EN]->(NilfgaardC),
+  (Sirena)-[:HABITA_EN]->(KaerTrolde),
   (Aparicion)-[:HABITA_EN]->(KaerMorhenC),
   (Aparicion)-[:HABITA_EN]->(Tir),
   (Aparicion)-[:HABITA_EN]->(Dol),
@@ -172,18 +183,19 @@ CREATE
 
 //Relacion ADRIESTRADO_EN
 CREATE 
-  (Geralt)-[:ADRIESTRADO_EN]->(Lobo),
-  (Lambert)-[:ADRIESTRADO_EN]->(Lobo),
-  (Vesemir)-[:ADRIESTRADO_EN]->(Lobo),
-  (Letho)-[:ADRIESTRADO_EN]->(Vibora),
-  (JadKaradin)-[:ADRIESTRADO_EN]->(Gato),
-  (Jerome)-[:ADRIESTRADO_EN]->(Grifo),
-  (Eskel)-[:ADRIESTRADO_EN]->(Lobo)
+  (Geralt)-[:ADIESTRADO_EN]->(Lobo),
+  (Lambert)-[:ADIESTRADO_EN]->(Lobo),
+  (Vesemir)-[:ADIESTRADO_EN]->(Lobo),
+  (Letho)-[:ADIESTRADO_EN]->(Vibora),
+  (JadKaradin)-[:ADIESTRADO_EN]->(Gato),
+  (Jerome)-[:ADIESTRADO_EN]->(Grifo),
+  (Eskel)-[:ADIESTRADO_EN]->(Lobo)
 
 //Relaciones GOBIERNA
 CREATE 
 	(Foltest)-[:GOBIERNA]->(Temeria),
-	(Emhyr)-[:GOBIERNA]->(NilfgaardP)
+	(Emhyr)-[:GOBIERNA]->(NilfgaardP),
+	(Bran)-[:GOBIERNA]->(Skellige)
 
 //Relaciones FORMA
 CREATE
@@ -194,6 +206,9 @@ CREATE
 	(Kovir)-[:FORMA]->(ReinosDelNorte),
 	(Aedirn)-[:FORMA]->(ReinosDelNorte),
 	(CintraP)-[:FORMA]->(ReinosDelNorte),
+	(ArdSkellig)-[:FORMA]->(Skellige),
+	(Undvik)-[:FORMA]->(Skellige),
+	(Faroe)-[:FORMA]->(Skellige),
 	(NilfgaardP)-[:FORMA]->(NilfgaardF)
 
 //Relaciones TOMA_LUGAR_EN
@@ -208,6 +223,7 @@ CREATE
 	(Scoiatael)-[:TOMA_PARTE]->(GolpeEstadoThanedd),
 	(ReinosDelNorte)-[:TOMA_PARTE]->(GolpeEstadoThanedd),
 	(NilfgaardF)-[:TOMA_PARTE]->(BatallaSodden),
+	(Skellige)-[:TOMA_PARTE]->(BatallaSodden),
 	(ReinosDelNorte)-[:TOMA_PARTE]->(BatallaSodden)
 
 

@@ -5,11 +5,21 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import logic.Consulta.Dificultad;
 
 public class JdbcNeo4jConnector {
 
 	String URL, user, password;
-
+	public List<Consulta> consultasPreProgramas;
+	
+	public JdbcNeo4jConnector()
+	{
+		consultasPreProgramas = crearConsultasPreprogramadas();
+	}
+	
 	public void setURL(String uRL) {
 		URL = uRL;
 	}
@@ -21,6 +31,17 @@ public class JdbcNeo4jConnector {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	private List<Consulta> crearConsultasPreprogramadas()
+	{
+		List<Consulta> consultas = new ArrayList<Consulta>();
+		
+		consultas.add( new Consulta("Obtener personajes", Dificultad.BASICA, "match(n:Personaje) return n", "Obtener la lista completa de personajes") );
+		consultas.add( new Consulta("Obtener paises", Dificultad.BASICA, "match(n:Pais) return n", "Obtener la lista completa de paises") );
+		
+		return consultas;
+	}
+	
 
 	public Connection connect()
 	{
@@ -79,4 +100,6 @@ public class JdbcNeo4jConnector {
 			
 		}
 	}
+
+	
 }
