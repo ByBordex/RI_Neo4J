@@ -86,7 +86,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.setForeground(Color.BLUE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[grow]", "[107.00,grow][105.00][grow]"));
+		contentPane.setLayout(new MigLayout("", "[grow]", "[225.00][97.00][222.00]"));
 		contentPane.add(getPnPremadeQuery(), "cell 0 0,grow");
 		contentPane.add(getPnManualQuery(), "cell 0 1,grow");
 		contentPane.add(getPanelQueryResult(), "cell 0 2,grow");

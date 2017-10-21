@@ -32,7 +32,7 @@ public class JPanelQueryResult extends JPanel {
 	public void addOutput(String query, String output)
 	{
 		String separator = "\n------- " + Calendar.getInstance().getTime() + " -------\n";
-		String consulta = "    Consulta:    " + query + "\n";
+		String consulta = "\tConsulta: \n" + query + "\n\n\tResultado:\n";
 		String current = txQueryOutput.getText();
 		
 		txQueryOutput.setText(  current + separator + consulta + output);

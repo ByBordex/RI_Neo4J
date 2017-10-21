@@ -36,8 +36,16 @@ public class JdbcNeo4jConnector {
 	{
 		List<Consulta> consultas = new ArrayList<Consulta>();
 		
-		consultas.add( new Consulta("Obtener personajes", Dificultad.BASICA, "match(n:Personaje) return n", "Obtener la lista completa de personajes") );
-		consultas.add( new Consulta("Obtener paises", Dificultad.BASICA, "match(n:Pais) return n", "Obtener la lista completa de paises") );
+		//Consultas básicas
+		consultas.add( new Consulta("Miembros escuela del lobo", Dificultad.BASICA,"MATCH (m:EscuelaBrujos {nombre_escuela: 'Lobo'})<-[:ADIESTRADO_EN]-(a:Personaje) RETURN a.nombre_personaje as Nombre","Muestra los personajes que han sido adiestrados en la escuela del lobo.")  );
+		consultas.add( new Consulta("Bestias de Oxenfurt", Dificultad.BASICA,"MATCH (m:Ciudad {name_ciudad: 'Oxenfurt'})<-[:HABITA_EN]-(a:Bestia) RETURN count(*) as NumeroBestias","Muestra las bestias que habitan en la ciudad de Oxenfurt.")  );
+		consultas.add( new Consulta("Miembros por facción", Dificultad.BASICA,"MATCH (f:Faccion)<-[:PERTENECE]-(a:Personaje) RETURN f.nombre_faccion as Faccion, count(*) as Miembros","Muestra el número de personajes que componen cada facción.")  );
+		
+		//Consultas intermedias.
+		consultas.add( new Consulta("Personajes nacidos en habitat de moira", Dificultad.INTERMEDIA,"MATCH (c:Ciudad)<-[:BORN]-(p:Personaje) WHERE (:Bestia {nombre_bestia:'Moira'})-[:HABITA_EN]->(c) RETURN DISTINCT p.nombre_personaje as Nombre, c.name_ciudad as Ciudad","Muestra el nombre delos personajes que han nacido en ciudades donde habita una moira.")  );
+		consultas.add( new Consulta("Personajes no nacidos en capital.", Dificultad.INTERMEDIA,"MATCH (c:Ciudad)<-[:BORN]-(p:Personaje) WHERE NOT (:Pais)<-[:CAPITAL_DE]-(c) RETURN DISTINCT p.nombre_personaje as Nombre, c.name_ciudad as Ciudad","Muestra los personajes que no han nacido en la capital de un pais.")  );
+
+		//Consultas avanzadas.
 		
 		return consultas;
 	}
@@ -71,7 +79,10 @@ public class JdbcNeo4jConnector {
 			while(rs.next())
 			{  
 			    for (int i = 1; i <= columnCount; i++) {
-			        result += (metadata.getColumnName(i) + ", " + rs.getString(i) );      
+			    	
+			        result += (metadata.getColumnName(i) + ": " + rs.getString(i));     
+			        if( i != columnCount)
+			        	result +=  ",  ";
 			    }
 			    result += "\n";
 			}
