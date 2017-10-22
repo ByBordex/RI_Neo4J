@@ -1,4 +1,5 @@
 package logic;
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -79,8 +80,23 @@ public class JdbcNeo4jConnector {
 			while(rs.next())
 			{  
 			    for (int i = 1; i <= columnCount; i++) {
+			    	result += metadata.getColumnName(i) + ": ";
+			    	//2003 es el tipo de los collect()
+			    	if( metadata.getColumnType(i) == 2003 )
+			    	{
+			    		String[] array = ( String[] ) rs.getArray(i).getArray();
+			    		for(int j = 0; j < array.length; j++)
+			    		{
+			    			result += array[j];
+			    			if( j != columnCount)
+					        	result +=  ", ";
+			    		}
+			    	}
+			    	else
+			    	{
+			    		result += rs.getString(i);
+			    	}
 			    	
-			        result += (metadata.getColumnName(i) + ": " + rs.getString(i));     
 			        if( i != columnCount)
 			        	result +=  ",  ";
 			    }
