@@ -192,8 +192,8 @@ public class VentanaPrincipal extends JFrame {
 		if (pnAvanzadas == null) {
 			pnAvanzadas = new JPanel();
 			pnAvanzadas.setBackground(Color.WHITE);
-			generateQueryPanels(pnAvanzadas, Dificultad.AVANZADA);
 			pnAvanzadas.setLayout(new MigLayout("", "[fill]", "[]"));
+			generateQueryPanels(pnAvanzadas, Dificultad.AVANZADA);
 		}
 		return pnAvanzadas;
 	}
