@@ -44,9 +44,9 @@ public class JdbcNeo4jConnector {
 		//Consultas intermedias.
 		consultas.add( new Consulta("Personajes nacidos en habitat de moira", Dificultad.INTERMEDIA,"MATCH (c:Ciudad)<-[:BORN]-(p:Personaje) WHERE (:Bestia {nombre_bestia:'Moira'})-[:HABITA_EN]->(c) RETURN DISTINCT p.nombre_personaje as Nombre, c.name_ciudad as Ciudad","Muestra el nombre delos personajes que han nacido en ciudades donde habita una moira.")  );
 		consultas.add( new Consulta("Personajes no nacidos en capital.", Dificultad.INTERMEDIA,"MATCH (c:Ciudad)<-[:BORN]-(p:Personaje) WHERE NOT (:Pais)<-[:CAPITAL_DE]-(c) RETURN DISTINCT p.nombre_personaje as Nombre, c.name_ciudad as Ciudad","Muestra los personajes que no han nacido en la capital de un pais.")  );
-
+		consultas.add( new Consulta("Miembros nacidos en Novigrado", Dificultad.INTERMEDIA,"MATCH (c:Ciudad{name_ciudad:'Novigrado'})-[:BORN]-(p:Personaje)-[:PERTENECE]-(f:Faccion) WITH f, count(p) AS numero ORDER BY numero DESC RETURN f.nombre_faccion AS Faccion, numero", "Muestra el numero de miembros de una facción nacidos en Novigrado") );
 		//Consultas avanzadas.
-		
+		consultas.add( new Consulta("Facciones que defienden en una batalla", Dificultad.AVANZADA, "MATCH (f:Faccion)-[p:TOMA_PARTE]->(a:Armisticio)<-[p1:TOMA_PARTE]-(f1:Faccion)<-[forma:FORMA]-(pais:Pais),(a:Armisticio)-[:TOMA_LUGAR_EN]->(pais:Pais), (f:Faccion)<-[fo:FORMA]-(pa:Pais) WHERE p.postura = 'Defensor' AND p1.postura = 'Atacante' RETURN DISTINCT f.nombre_faccion AS defensor,pa.nombre_pais AS paisesQueFormanFaccionDefensora,a.nombre_armisticio AS guerra,pais.nombre_pais AS paisDondeSeSituaGuerra,f1.nombre_faccion AS atacante,pais.nombre_pais AS paisQueFormaFaccionAtacante", "") );
 		return consultas;
 	}
 	
